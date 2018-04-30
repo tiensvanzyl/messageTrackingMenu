@@ -17,12 +17,14 @@ function Show-Menu() {
 
     Write-Host "================ Message Tracking - Choose your preferred option below ================" #-ForegroundColor Green
     
-    Write-Host "1: Track mail with no subject full. (Output to console)."
-    Write-Host "2: Track mail with no subject full. (Output to text file)."
+    Write-Host "1: Track mail with no subject full. (Output to console)." 
+    Write-Host "2: Track mail with no subject full. (Output to text file)." #-ForegroundColor Blue
     Write-Host "3: Track mail with subject full. (Output to console)."
-    Write-Host "4: Track mail with subject full. (Output to text file)."
+    Write-Host "4: Track mail with subject full. (Output to text file)." #-ForegroundColor Blue
     Write-Host "5: Track mail with no subject delivered only. (Output to console)."
-    Write-Host "6: Track mail with no subject delivered only. (Output to text file)."
+    Write-Host "6: Track mail with no subject delivered only. (Output to text file)." #-ForegroundColor Blue
+    Write-Host "7: Track mail with no subject sender only. (Output to console)."
+    Write-Host "8: Track mail with no subject recipient only. (Output to console)." #-ForegroundColor Blue
     Write-Host "Q: Press 'Q' to quit."
     }
     
@@ -39,6 +41,8 @@ function Show-Menu() {
                 $EndDate = Read-Host -Prompt "Enter the end date (mm/dd/yy)."
                 
                 #Message tracking script for full detail here:
+
+                Get-Alias
             } '2' {
                 cls
                 'You chose option #2'
