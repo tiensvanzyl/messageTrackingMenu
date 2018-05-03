@@ -131,8 +131,7 @@ function Show-Menu() {
                 $Recipient = Read-Host -Prompt "Enter the recipient email address."
                 $StartDate = Read-Host -Prompt "Enter the start date (mm/dd/yy)."
                 $EndDate = Read-Host -Prompt "Enter the end date (mm/dd/yy)."
-                $Output = Read-Host -Prompt "Enter the path for the text file output. (c:\temp\tracking.txt)"
-
+                
                 Get-TransportServer $Server | Get-MessageTrackingLog -Recipient $Recipient -start $StartDate -End $EndDate -resultsize unlimited  | select-object Timestamp,EventID,ServerHostname,Totalbytes,MessageSubject,Sender,ReturnPath,@{Name="Recipients";Expression={$_.recipients}}
 
             }'10' {
