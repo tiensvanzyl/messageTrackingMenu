@@ -15,18 +15,18 @@
 
 function Show-Menu() {
 
-    Write-Host "================ Message Tracking - Choose your preferred option below ================`n" -ForegroundColor Yellow
+    Write-Host "================ Message Tracking - Choose your preferred option below ================`n" -ForegroundColor Green
     
     Write-Host "1: Track mail with no subject full. (Output to console).`n" 
-    Write-Host "2: Track mail with no subject full. (Output to text file).`n" #-ForegroundColor Blue
+    Write-Host "2: Track mail with no subject full. (Output to text file).`n" 
     Write-Host "3: Track mail with subject full. (Output to console).`n"
-    Write-Host "4: Track mail with subject full. (Output to text file).`n" #-ForegroundColor Blue
+    Write-Host "4: Track mail with subject full. (Output to text file).`n" 
     Write-Host "5: Track mail with no subject delivered to recipient only. (Output to console).`n"
-    Write-Host "6: Track mail with no subject delivered to recipient only. (Output to text file).`n" #-ForegroundColor Blue
+    Write-Host "6: Track mail with no subject delivered to recipient only. (Output to text file).`n" 
     Write-Host "7: Track mail with no subject sender only. (Output to console).`n"
     Write-Host "8: Track mail with no subject sender only. (Output to text file).`n"
-    Write-Host "9: Track mail with no subject recipient only. (Output to console).`n" #-ForegroundColor Blue
-    Write-Host "10: Track mail with no subject recipient only. (Output to text file).`n" #-ForegroundColor Blue
+    Write-Host "9: Track mail with no subject recipient only. (Output to console).`n" 
+    Write-Host "10: Track mail with no subject recipient only. (Output to text file).`n" 
     Write-Host "Q: Press 'Q' to quit.`n"
     }
     
@@ -55,7 +55,7 @@ function Show-Menu() {
                 
                 Get-TransportServer $Server | Get-MessageTrackingLog -Sender $Sender -recipient $Recipient -start $StartDate -End $EndDate -resultsize unlimited | select-object Timestamp,EventID,ServerHostname,Totalbytes,MessageSubject,Sender,ReturnPath,@{Name="Recipients";Expression={$_.recipients}} > $Output
 
-                Read-Host "The results have been saved to $Output"
+                Write-Host "The results have been saved to $Output" -ForegroundColor Green
 
             } '3' {
                 cls
@@ -80,7 +80,7 @@ function Show-Menu() {
 
                 Get-TransportServer $Server | Get-MessageTrackingLog -Sender $Sender -recipient $Recipient -MessageSubject $Subject -start $StartDate -End $EndDate -resultsize unlimited | select-object Timestamp,EventID,ServerHostname,Totalbytes,MessageSubject,Sender,ReturnPath,@{Name="Recipients";Expression={$_.recipients}} > $Output
 
-                Read-Host "The results have been saved to $Output"
+                Write-Host "The results have been saved to $Output" -ForegroundColor Green
 
             }'5' {
                 cls
@@ -101,7 +101,7 @@ function Show-Menu() {
 
                 Get-TransportServer $Server | Get-MessageTrackingLog -recipient $Recipient -start $StartDate -End $EndDate -resultsize unlimited  | where {$_.eventid –eq “deliver”} | select-object Timestamp,EventID,ServerHostname,Totalbytes,MessageSubject,Sender,ReturnPath,@{Name="Recipients";Expression={$_.recipients}} > $Output
 
-                Read-Host "The results have been saved to $Output"
+                Write-Host "The results have been saved to $Output" -ForegroundColor Green
 
             }'7' {
                 cls
@@ -123,7 +123,7 @@ function Show-Menu() {
 
                 Get-TransportServer $Server | Get-MessageTrackingLog -Sender $Sender -start $StartDate -End $EndDate -resultsize unlimited  | select-object Timestamp,EventID,ServerHostname,Totalbytes,MessageSubject,Sender,ReturnPath,@{Name="Recipients";Expression={$_.recipients}} > $Output
 
-                Read-Host "The results have been saved to $Output"
+                Write-Host "The results have been saved to $Output" -ForegroundColor Green
 
             }'9' {
                 cls
@@ -145,7 +145,7 @@ function Show-Menu() {
 
                 Get-TransportServer $Server | Get-MessageTrackingLog -Recipient $Recipient -start $StartDate -End $EndDate -resultsize unlimited  | select-object Timestamp,EventID,ServerHostname,Totalbytes,MessageSubject,Sender,ReturnPath,@{Name="Recipients";Expression={$_.recipients}} > $Output
 
-                Read-Host "The results have been saved to $Output"
+                Write-Host "The results have been saved to $Output" -ForegroundColor Green
 
             } 'q' {
                 return
