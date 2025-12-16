@@ -1,7 +1,7 @@
 ###########################################################################################
 #   A message tracking script with a menu to assist users with easy message tracking      #
 #   Author: Tiens van Zyl                                                                 #
-#   Email: tiens.vanzyl@gmail.com                                                         #
+#   Email:                                                       #
 #   Date:   31 April 2018                                                                 #
 #   Updated by:                                                                           #
 #   Updates:                                                                              #
